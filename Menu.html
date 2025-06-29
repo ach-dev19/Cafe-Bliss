@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Café Bliss Menu</title>
+  <link rel="icon" type="image/x-icon" href="https://images.vexels.com/content/127458/preview/coffee-round-service-icon-b09759.png">
+  <style>
+    .glowing-button {
+      background-color: tan;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+      outline: none;
+      box-shadow: 0 0 5px rgba(10, 10, 10, 10);
+      transition: all 0.3s ease;
+    }
+
+    .glowing-button:hover {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .glowing-button:active {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+      transform: scale(1.05);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      color: tan;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .menu-header h1 {
+      font-size: 2.5em;
+      margin: 0;
+      color: tan;
+    }
+
+    .menu-section {
+      margin-bottom: 30px;
+    }
+
+    .menu-section h2 {
+      font-size: 2em;
+      border-bottom: 2px solid tan;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .menu-item-name {
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+
+    .menu-item-price {
+      font-size: 1.2em;
+      color: tan;
+    }
+
+    a {
+      color: tan;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img style="width: 50px; border-radius: 30px;" src="https://img.freepik.com/free-vector/coffee-cup-tan-colour_78370-3051.jpg"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="file:///C:/Users/vsmat/Desktop/Coding%20by%20Achyuthan/Cafe%20Bliss/Cafe%20Bliss%20VSC.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><strong>Menu</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="file:///C:/Users/vsmat/Desktop/Coding%20by%20Achyuthan/Cafe%20Bliss/About%20Page.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="menu-container">
+    <div class="menu-header">
+      <h1>Café Bliss Menu</h1>
+      <h5>Add things to cart by clicking name!</h5>
+    </div>
+
+    <div class="menu-section">
+      <h2>Breakfast</h2>
+      <div class="menu-item">
+        <div class="menu-item-name" onclick="addtoCart('Waffle')">Waffle</div>
+        <div class="menu-item-price">$5.99</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-name" onclick="addtoCart('French Toast')">French Toast</div>
+        <div class="menu-item-price">$6.99</div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h2>Lunch</h2>
+      <div class="menu-item">
+        <div class="menu-item-name" onclick="addtoCart('Caesar Salad')">Caesar Salad</div>
+        <div class="menu-item-price">$9.99</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-name" onclick="addtoCart('Sandwich')">Sandwich</div>
+        <div class="menu-item-price">$7.99</div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h2>Sides</h2>
+      <div class="menu-item">
+        <div class="menu-item-name" onclick="addtoCart('Fries')">Fries</div>
+        <div class="menu-item-price">$2.99</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-name" onclick="addtoCart('Veggies')">Veggies</div>
+        <div class="menu-item-price">$1.99</div>
+      </div>
+    </div>
+
+    <br><br><br><br>
+    <button class="glowing-button" onclick="viewCart()">Cart</button>
+    <button class="glowing-button" onclick="checkout()">Check Out</button>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addtoCart(item) {
+      cart.push(item);
+      alert(item + " added to cart!");
+    }
+
+    function viewCart() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+      } else {
+        alert("Your cart contains:\n- " + cart.join("\n- "));
+      }
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Please add items to your cart before checking out.");
+        return;
+      }
+
+      const prices = {
+        'Waffle': 5.99,
+        'French Toast': 6.99,
+        'Caesar Salad': 9.99,
+        'Sandwich': 7.99,
+        'Fries': 2.99,
+        'Veggies': 1.99
+      };
+
+      let subtotal = 0;
+      cart.forEach(item => {
+        if (prices[item]) subtotal += prices[item];
+      });
+
+      const taxRate = 0.0825;
+      const tax = subtotal * taxRate;
+      const total = subtotal + tax;
+
+      alert(
+        "Thank you for your order!\n" +
+        "You've ordered:\n- " + cart.join("\n- ") +
+        `\n\nSubtotal: $${subtotal.toFixed(2)}` +
+        `\nTax (8.25%): $${tax.toFixed(2)}` +
+        `\nTotal: $${total.toFixed(2)}` +
+        `\n\nWe'll start preparing and finish in 5 seconds!`
+      );
+
+      cart = [];
+    }
+  </script>
+</body>
+</html>
